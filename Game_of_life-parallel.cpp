@@ -40,7 +40,7 @@ void exchBord(){
     MPI_Request req;
     MPI_Status status;
     if(myrank == 0){
-        MPI_Isend(&ReadM[V(1,0)], nCols, MPI_INT, 1, 0, MPI_COMM_WORLD, &req);
+        MPI_Send(&ReadM[V(1,0)], nCols, MPI_INT, 1, 0, MPI_COMM_WORLD);
         MPI_Isend(&ReadM[V((nRows/2),0)], nCols, MPI_INT, 1, 1, MPI_COMM_WORLD, &req);
         MPI_Recv(&ReadM[V(0,0)], nCols, MPI_INT, 1, 1, MPI_COMM_WORLD, &status);
         MPI_Recv(&ReadM[V((nRows/2)+1,0)], nCols, MPI_INT, 1, 0, MPI_COMM_WORLD, &status);
